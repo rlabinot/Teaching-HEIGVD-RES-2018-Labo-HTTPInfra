@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function(req, res){
-   res.send( generateStudents());
+   res.send( generateAddresses());
 });
 
 app.get('/test', function(req, res){
@@ -16,31 +16,22 @@ app.listen(3000, function(){
    console.log('Accepting HTTP requests on port 3000');
 });
 
-function generateStudents() {
-   var numberOfStudents = chance.integer({
+function generateAddresses() {
+   var numberOfAddresses = chance.integer({
       min: 0,
       max: 10
    });
-   console.log(numberOfStudents);
-   var students = [];
-   for(var i = 0; i < numberOfStudents; ++i){
-      var gender = chance.gender();
-      var birthYear = chance.year({
-         min: 1986,
-         max: 1996
-      });
+   console.log(numberOfAddresses);
+   var addresses = [];
+   for(var i = 0; i < numberOfAddresses; ++i){
 
-      students.push({
-         firstName: chance.first({
-            gender: gender
-         }),
-         lastName: chance.last(),
-         gender: gender,
-         birthday: chance.birthday({
-            year: birthYear
-         })
+      addresses.push({
+         address: chance.address(),
+         phone: chance.phone({ country: 'fr' }),
+         city: chance.city(),
+         country: chance.country({ full: true })
       });
    };
-   console.log(students);
-   return students;
+   console.log(addresses);
+   return addresses;
 }
