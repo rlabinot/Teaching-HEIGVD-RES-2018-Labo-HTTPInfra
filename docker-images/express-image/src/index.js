@@ -1,43 +1,37 @@
-var Chance = require("chance");
+var Chance = require('chance');
 var chance = new Chance();
-var express = require("express");
-var app = new express();
 
-app.get('/', function(req, res) {
-	res.send(generateStudents());
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res){
+   res.send( generateAddresses());
 });
 
-app.listen(3000, function() {
-	console.log("Accepting HTTP requests on port 3000");
+app.get('/test', function(req, res){
+   res.send("Hello RES - test is working");
 });
 
-function generateStudents() {
-	var numberOfStudents = chance.integer({
-		// définition des bornes
-		min: 0,
-		max: 10
-	});
-	console.log(numberOfStudents);
-	
-	var students = [];
-	for (var i = 0; i < numberOfStudents; ++i) {
-		var gender = chance.gender();
-		var birthYear = chance.year({
-			min: 1986,
-			max: 1996
-		});
-		
-		students.push({
-			firstName: chance.first({
-				gender: gender // donne un nom masculin ou féminin
-			}),
-			lastName: chance.last(),
-			gender: gender,
-			birthday: chance.birthday({
-				year: birthYear
-			})
-		});
-	};
-	console.log(students);
-	return students;
+app.listen(3000, function(){
+   console.log('Accepting HTTP requests on port 3000');
+});
+
+function generateAddresses() {
+   var numberOfAddresses = chance.integer({
+      min: 0,
+      max: 10
+   });
+   console.log(numberOfAddresses);
+   var addresses = [];
+   for(var i = 0; i < numberOfAddresses; ++i){
+
+      addresses.push({
+         address: chance.address(),
+         phone: chance.phone({ country: 'fr' }),
+         city: chance.city(),
+         country: chance.country({ full: true })
+      });
+   };
+   console.log(addresses);
+   return addresses;
 }
