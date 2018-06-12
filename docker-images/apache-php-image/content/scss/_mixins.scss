@@ -1,8 +1,13 @@
-@mixin body-font() {
-  font-family: 'Lato';
+// Mixins
+// Background Cover Mixin
+@mixin background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-@mixin heading-font() {
-  font-weight: 700;
-  font-family: 'Montserrat';
+// Font Mixins
+@mixin body-font {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
