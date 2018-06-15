@@ -1,8 +1,8 @@
-#Teaching-HEIGVD-RES-2018-Labo-HTTPInfra
+# Teaching-HEIGVD-RES-2018-Labo-HTTPInfra
 
 Authors : Labinot Rashiti & Romain Gallay
 
-##Introduction
+## Introduction
 
 During the RES training in HEIG-VD, we have to do a big lab called HTTPInfra. It summaries much of the knowledge we learned in this course during the semester.
 
